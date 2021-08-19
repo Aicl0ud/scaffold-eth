@@ -7,6 +7,19 @@ export const ETHERSCAN_KEY = "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8";
 // BLOCKNATIVE ID FOR Notify.js:
 export const BLOCKNATIVE_DAPPID = "0b58206a-f3c0-4701-a62f-73c7243e8c77";
 
+// MUMBAI price
+export var mprice = fetch('https://api.binance.com/api/v3/ticker/price?symbol=MATICUSDT')
+.then(response => response.json())
+.then((jsonData) => {
+  // jsonData is parsed json object received from url
+  mprice = jsonData.price.substring(0, 5)
+  console.log("OKKO"+mprice)
+})
+.catch((error) => {
+  // handle your errors here
+  console.error(error)
+});
+
 // EXTERNAL CONTRACTS
 
 export const DAI_ADDRESS = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
@@ -367,7 +380,7 @@ export const NETWORKS = {
     name: "mumbai",
     color: "#92D9FA",
     chainId: 80001,
-    price: 1,
+    price: 0,
     gasPrice: 1000000000,
     rpcUrl: "https://rpc-mumbai.maticvigil.com",
     faucet: "https://faucet.matic.network/",
